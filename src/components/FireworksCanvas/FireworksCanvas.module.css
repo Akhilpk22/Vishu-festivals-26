@@ -1,0 +1,11 @@
+/* FireworksCanvas.module.css */
+
+/* Canvas fills its parent absolutely, sits behind all content */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;   /* clicks pass through to elements below */
+  z-index: 0;
+}

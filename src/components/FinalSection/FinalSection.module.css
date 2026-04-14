@@ -1,0 +1,125 @@
+/* FinalSection.module.css */
+
+/* ── Wrapper ───────────────────────────────── */
+.section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: fadeIn 0.85s ease;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* ── Content ───────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 clamp(20px, 5vw, 60px);
+  max-width: 560px;
+  width: 100%;
+}
+
+/* ── Decorative dots ───────────────────────── */
+.dots {
+  color: rgba(200, 144, 10, 0.4);
+  letter-spacing: 10px;
+  font-size: clamp(12px, 2.5vw, 16px);
+  margin-bottom: 20px;
+}
+
+/* ── Main heading ──────────────────────────── */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 9vw, 78px);
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 56px rgba(255, 215, 0, 0.38);
+  margin-bottom: 10px;
+  line-height: 1.05;
+}
+
+/* ── Dear line ─────────────────────────────── */
+.dear {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-mid);
+  font-size: clamp(18px, 4vw, 30px);
+  margin-bottom: 14px;
+}
+
+/* ── Thank-you text ────────────────────────── */
+.thanks {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(200, 160, 74, 0.58);
+  font-size: clamp(15px, 3vw, 20px);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+/* ── Malayalam blessing ────────────────────── */
+.malayalam {
+  font-family: var(--font-mal);
+  color: rgba(200, 144, 10, 0.42);
+  font-size: clamp(16px, 3.5vw, 24px);
+  letter-spacing: 1px;
+  margin-bottom: 52px;
+}
+
+/* ── Leave button row (right-aligned) ─────── */
+.leaveRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.leaveBtn {
+  padding: 12px 36px;
+  background: transparent;
+  border: 1px solid rgba(200, 144, 10, 0.32);
+  border-radius: var(--radius-btn);
+  color: rgba(200, 160, 74, 0.65);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.leaveBtn:hover {
+  border-color: var(--gold-dark);
+  color: var(--gold);
+  box-shadow: 0 0 22px rgba(200, 144, 10, 0.22);
+}
+
+.leaveBtn:active {
+  transform: scale(0.96);
+}
+
+/* ── Farewell (blank) screen ───────────────── */
+.farewell {
+  width: 100%;
+  height: 100%;
+  background: #050308;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.1s ease;
+}
+
+.farewellText {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(200, 144, 10, 0.28);
+  font-size: clamp(18px, 3vw, 20px);
+  letter-spacing: 6px;
+}

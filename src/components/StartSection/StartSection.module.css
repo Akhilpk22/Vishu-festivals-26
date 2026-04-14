@@ -1,0 +1,103 @@
+/* StartSection.module.css */
+
+/* ── Wrapper ───────────────────────────────── */
+.section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* ── Spinning rings ────────────────────────── */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ringOuter {
+  width:  clamp(260px, 52vw, 460px);
+  height: clamp(260px, 52vw, 460px);
+  border: 1px solid rgba(200, 144, 10, 0.14);
+  animation: spinSlow 22s linear infinite;
+}
+
+.ringInner {
+  width:  clamp(190px, 38vw, 340px);
+  height: clamp(190px, 38vw, 340px);
+  border: 1px dashed rgba(200, 144, 10, 0.09);
+  animation: spinSlow 14s linear infinite reverse;
+}
+
+/* ── Content ───────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.eyebrow {
+  color: rgba(200, 144, 10, 0.55);
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 2vw, 12px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 14vw, 110px);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 2px;
+  text-shadow: 0 0 80px rgba(255, 215, 0, 0.3);
+  margin-bottom: 12px;
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-mid);
+  font-size: clamp(15px, 3vw, 22px);
+  margin-bottom: 52px;
+}
+
+/* ── Begin button ──────────────────────────── */
+.startBtn {
+  padding: clamp(14px, 3vw, 18px) clamp(44px, 9vw, 76px);
+  background: transparent;
+  border: 1.5px solid var(--gold-dark);
+  border-radius: var(--radius-btn);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: clamp(14px, 3vw, 18px);
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+  box-shadow: 0 0 28px rgba(200, 144, 10, 0.18), inset 0 0 28px rgba(200, 144, 10, 0.04);
+}
+
+.startBtn:hover {
+  background: rgba(200, 144, 10, 0.14);
+  box-shadow: 0 0 44px rgba(255, 215, 0, 0.38), inset 0 0 28px rgba(200, 144, 10, 0.1);
+  transform: scale(1.05);
+}
+
+.startBtn:active {
+  transform: scale(0.97);
+}

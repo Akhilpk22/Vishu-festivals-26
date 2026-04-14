@@ -1,0 +1,98 @@
+/* LoadingSection.module.css */
+
+/* ── Wrapper ───────────────────────────────── */
+.section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.7s ease;
+  opacity: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* ── Malayalam watermark ───────────────────── */
+.watermark {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mal);
+  font-size: clamp(60px, 15vw, 140px);
+  color: rgba(200, 144, 10, 0.07);
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Centre content ────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Kani flower icon */
+.icon {
+  display: block;
+  font-size: clamp(48px, 10vw, 80px);
+  margin-bottom: 16px;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 7vw, 58px);
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-shadow: 0 0 50px rgba(255, 215, 0, 0.35);
+  margin-bottom: 8px;
+}
+
+.subheading {
+  font-family: var(--font-mal);
+  color: var(--gold-mid);
+  font-size: clamp(13px, 3vw, 19px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+/* ── Progress bar ──────────────────────────── */
+.barTrack {
+  width: clamp(200px, 40vw, 320px);
+  height: 3px;
+  background: rgba(200, 144, 10, 0.18);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 0 auto 10px;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+  background-size: 200%;
+  border-radius: 99px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.55);
+  animation: shimmer 1.6s linear infinite;
+}
+
+.percent {
+  color: rgba(200, 160, 74, 0.45);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+}

@@ -1,0 +1,44 @@
+/* App.module.css – root shell + persistent help button */
+
+.root {
+  width: 100vw;
+  height: 100dvh;           /* dvh = respects mobile browser chrome */
+  background: var(--bg-grad);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Persistent help button (bottom-left) ── */
+.helpBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 500;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  background: rgba(200, 144, 10, 0.12);
+  border: 1px solid var(--gold-dark);
+  color: var(--gold);
+  font-size: 18px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.helpBtn:hover {
+  background: rgba(200, 144, 10, 0.3);
+  transform: scale(1.12);
+  box-shadow: 0 0 18px rgba(200, 144, 10, 0.35);
+}
+
+.helpBtn:active {
+  transform: scale(0.96);
+}

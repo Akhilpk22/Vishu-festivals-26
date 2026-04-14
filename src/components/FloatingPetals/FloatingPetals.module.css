@@ -1,0 +1,19 @@
+/* FloatingPetals.module.css */
+
+.wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Each petal is a tiny rotated oval */
+.petal {
+  position: absolute;
+  top: -20px;
+  border-radius: 50% 10% 50% 10%;   /* organic leaf shape */
+  animation: floatDown linear infinite;
+}
+
+/* floatDown is defined in src/index.css (global keyframes) */
