@@ -53,10 +53,10 @@ export default function LoadingSection({ onDone }) {
 
       {/* Centre content */}
       <div className={styles.content}>
-        <span className={styles.icon} aria-hidden="true">🌼</span>
+        <span className={styles.icon} aria-hidden="true">🪔</span>
 
         <h1 className={styles.heading}>Happy Vishu</h1>
-
+  
         <p className={styles.subheading}>വിഷു ആശംസകൾ</p>
 
         {/* Progress bar */}

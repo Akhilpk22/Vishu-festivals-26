@@ -101,3 +101,11 @@
 .startBtn:active {
   transform: scale(0.97);
 }
+
+
+@media (max-width: 600px) {
+  .ringOuter,
+  .ringInner {
+    display: none;
+  }
+}

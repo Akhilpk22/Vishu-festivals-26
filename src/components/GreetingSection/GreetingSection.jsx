@@ -14,37 +14,65 @@
      onNext   {fn}      – called after auto-advance timeout
 ────────────────────────────────────────────────────── */
 
-import { useState, useEffect } from 'react'
-import FireworksCanvas from '../FireworksCanvas/FireworksCanvas'
-import FloatingPetals  from '../FloatingPetals/FloatingPetals'
-import styles from './GreetingSection.module.css'
+import { useState, useEffect } from "react";
+import FireworksCanvas from "../FireworksCanvas/FireworksCanvas";
+import FloatingPetals from "../FloatingPetals/FloatingPetals";
+import styles from "./GreetingSection.module.css";
 
-export default function GreetingSection({ realName, nickName, onNext }) {
+export default function GreetingSection({ realName, quote, nickName, onNext }) {
   /* displayName: prefer nick name, fall back to real name */
-  const displayName = nickName || realName
+  const displayName = nickName || realName;
 
-  const [visible, setVisible] = useState(false)   // triggers CSS stagger
-  const [fadeOut, setFadeOut] = useState(false)
+  const [visible, setVisible] = useState(false); // triggers CSS stagger
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     /* Small delay before revealing text for a smooth entrance */
-    const showTimer = setTimeout(() => setVisible(true), 120)
+    const showTimer = setTimeout(() => setVisible(true), 120);
 
     /* Auto-advance after 15 seconds */
     const nextTimer = setTimeout(() => {
-      setFadeOut(true)
-      setTimeout(onNext, 900)
-    }, 15000)
+      setFadeOut(true);
+      setTimeout(onNext, 900);
+    }, 15000);
 
     return () => {
-      clearTimeout(showTimer)
-      clearTimeout(nextTimer)
-    }
-  }, [onNext])
+      clearTimeout(showTimer);
+      clearTimeout(nextTimer);
+    };
+  }, [onNext]);
+
+  const icons = [
+    "🪔", // lamp
+    "🌼", // konna flower
+    "✨", // sparkle
+    "💰", // prosperity
+    "🌾", // harvest
+    "🥭", // mango
+    "🌸", // blossom
+    "💫", // glowing star
+    "🔥", // festive energy
+  ];
+  const [iconIndex, setIconIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); // fade out
+
+      setTimeout(() => {
+        setIconIndex((prev) => (prev + 1) % icons.length);
+        setFade(true); // fade in
+      }, 300); // timing for smooth transition
+    }, 1500); // change every 2 sec
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className={`${styles.section} ${fadeOut ? styles.fadeOut : ''} ${visible ? styles.visible : ''}`}>
-
+    <div
+      className={`${styles.section} ${fadeOut ? styles.fadeOut : ""} ${visible ? styles.visible : ""}`}
+    >
       <FireworksCanvas active intensity={1.6} />
       <FloatingPetals />
 
@@ -53,21 +81,26 @@ export default function GreetingSection({ realName, nickName, onNext }) {
 
       {/* Content */}
       <div className={styles.content}>
-
         {/* Kani flower – floats up and down */}
-        <span className={`${styles.flower} ${styles.reveal1}`} aria-hidden="true">🌼</span>
+        <span
+          className={`${styles.flower} ${styles.reveal1} ${fade ? styles.fadeIn : styles.fadeOut}`}
+          aria-hidden="true"
+        >
+          {icons[iconIndex]}
+        </span>
 
-        <h1 className={`${styles.mainTitle} ${styles.reveal2}`}>
-          Happy Vishu
-        </h1>
+        <h1 className={`${styles.mainTitle} ${styles.reveal2}`}>Happy Vishu</h1>
 
-        <p className={`${styles.name} ${styles.reveal3}`}>
-          {displayName} 🎉
-        </p>
+        <p className={`${styles.name} ${styles.reveal3}`}>{displayName} 🎉</p>
 
+       
         <blockquote className={`${styles.quote} ${styles.reveal4}`}>
-          "May the Vishu Kani bless your eyes with beauty,<br />
-          and this new year bring you endless abundance."
+          {quote.split("\n").map((line, i) => (
+            <span key={i}>
+              {line}
+              <br />
+            </span>
+          ))}
         </blockquote>
 
         {/* Malayalam blessing */}
@@ -81,5 +114,5 @@ export default function GreetingSection({ realName, nickName, onNext }) {
         continuing in a moment…
       </p>
     </div>
-  )
+  );
 }

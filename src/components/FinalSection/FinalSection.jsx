@@ -1,51 +1,13 @@
-/* ─────────────────────────────────────────────────────
-   FinalSection.jsx
-
-   The thank-you / farewell screen. Shows:
-     • "Happy Vishu" + personalised farewell text
-     • Malayalam blessing
-     • Leave button (bottom-right aligned)
-
-   Clicking Leave:
-     1. Triggers a big fireworks burst
-     2. Fades out the section
-     3. Shows a minimal dark "Farewell" screen
-
-   Props:
-     realName {string}  – user's real name (may be empty)
-────────────────────────────────────────────────────── */
-
-import { useState } from 'react'
 import FireworksCanvas from '../FireworksCanvas/FireworksCanvas'
 import FloatingPetals  from '../FloatingPetals/FloatingPetals'
 import styles from './FinalSection.module.css'
 
-export default function FinalSection({ realName }) {
-  const [burst,  setBurst]  = useState(false)
-  const [fadeOut, setFadeOut] = useState(false)
-  const [gone,   setGone]   = useState(false)
-
-  const handleLeave = () => {
-    setBurst(true)                              // fire big burst
-    setTimeout(() => {
-      setFadeOut(true)                          // fade section out
-      setTimeout(() => setGone(true), 1000)    // swap to blank screen
-    }, 1200)
-  }
-
-  /* ── Blank farewell screen ── */
-  if (gone) {
-    return (
-      <div className={styles.farewell}>
-        <p className={styles.farewellText}>~ Farewell ~</p>
-      </div>
-    )
-  }
+export default function FinalSection({ realName, onRestart }) {
 
   return (
-    <div className={`${styles.section} ${fadeOut ? styles.fadeOut : ''}`}>
+    <div className={styles.section}>
 
-      <FireworksCanvas active={burst} intensity={burst ? 3 : 0.35} />
+      <FireworksCanvas active intensity={1.2} />
       <FloatingPetals />
 
       <div className={styles.content}>
@@ -65,15 +27,19 @@ export default function FinalSection({ realName }) {
 
         {/* Malayalam blessing */}
         <p className={styles.malayalam} lang="ml">
-          ഈ വിഷുവും ഭാഗ്യദായകം ആകട്ടെ 🌺
+          ഈ വിഷു സന്തോഷവും സമൃദ്ധിയും നിറഞ്ഞതാകട്ടെ 🌺
         </p>
 
-        {/* Leave button – right-aligned */}
+        {/* 🔥 ONLY BUTTON NOW */}
         <div className={styles.leaveRow}>
-          <button className={styles.leaveBtn} onClick={handleLeave}>
-            Leave ✦
+          <button 
+            className={styles.leaveBtn} 
+            onClick={onRestart}
+          >
+            Try Again 🔄
           </button>
         </div>
+
       </div>
     </div>
   )
